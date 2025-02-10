@@ -1,67 +1,45 @@
 ﻿Public Class Form1
 
-    Private Sub Label8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label8.Click
+    Private _oArr As String
 
+    Private Property oArr(ByVal p1 As Integer) As String
+        Get
+            Return _oArr
+        End Get
+        Set(ByVal value As String)
+            _oArr = value
+        End Set
+    End Property
+
+    Private Sub btnobj_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnobj.Click
+        Dim oArr(2) As Object
+        Dim sArr() As String = New String() {"dance", "music", "singing"}
+
+        oArr(0) = 101
+        oArr(1) = "aaa"
+        oArr(2) = sArr()
+
+        MessageBox.Show(CStr(oArr(0)))
+        MessageBox.Show(CStr(oArr(1)))
+        MessageBox.Show(oArr(2)(1))
     End Sub
 
-    Private Sub TxtUSERID_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtUSERID.TextChanged
+    Private Sub btncollection_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btncollection.Click
+        Dim Actors As New Collection
+        Actors.Add("hritik", "hr")
+        Actors.Add("sara ali", "3.14")
 
+        MessageBox.Show(CStr(Actors.Item("hr")))
+        MessageBox.Show(CStr(Actors.Item(1)))
+        MessageBox.Show(CStr(Actors.Item("3.14")))
     End Sub
 
-    Private Sub TxtPWD_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtPWD.TextChanged
+    Private Function oArr(ByVal p1 As Integer) As String
+        Throw New NotImplementedException
+    End Function
 
-    End Sub
+    Private Function oArr(ByVal p1 As Integer) As String
+        Throw New NotImplementedException
+    End Function
 
-    Private Sub TxtCPWD_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtCPWD.TextChanged
-
-    End Sub
-
-    Private Sub TxtADD_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtADD.TextChanged
-
-    End Sub
-
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub TxtPHONE_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtPHONE.TextChanged
-
-    End Sub
-
-    Private Sub TxtEMAIL_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtEMAIL.TextChanged
-
-    End Sub
-
-    Private Sub RBMALE_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBMALE.CheckedChanged
-
-    End Sub
-
-    Private Sub RBFEMALE_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBFEMALE.CheckedChanged
-
-    End Sub
-
-    Private Sub CHKHOBBIES_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CHKHOBBIES.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub BTNREG_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNREG.Click
-        If TxtPWD.Text <> TxtCPWD.Text Then
-            MessageBox.Show("PASSWORD AND CPWD INVALID")
-        End If
-        LBLMSG.Text = "ADDRESS:" & TxtADD.Text & vbCrLf & "PHONE:" & TxtPHONE.Text & vbCrLf & "EMAIL:" & TxtEMAIL.Text & vbCrLf
-
-        If RBMALE.Checked = True Then
-            LBLMSG.Text += "GENDER:" & RBMALE.Text & vbCrLf & "HOBBIES:"
-        ElseIf RBFEMALE.Checked = True Then
-            LBLMSG.Text += "GENDER:" & RBFEMALE.Text & vbCrLf & "HOBBIES:"
-        End If
-
-        For Each Item In CHKHOBBIES.CheckedItems
-            LBLMSG.Text += "Item" & vbCrLf
-        Next
-    End Sub
-
-    Private Sub Label9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LBLMSG.Click
-
-    End Sub
 End Class
